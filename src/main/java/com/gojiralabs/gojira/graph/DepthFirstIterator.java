@@ -5,6 +5,7 @@ import static com.gojiralabs.gojira.collections.Iterators.reversedIterable;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class DepthFirstIterator<T> implements Iterator<TreeNode<T>> {
 
@@ -21,8 +22,11 @@ public class DepthFirstIterator<T> implements Iterator<TreeNode<T>> {
 
 	@Override
 	public TreeNode<T> next() {
+		if (!hasNext()) {
+			throw new NoSuchElementException();
+		}
 		TreeNode<T> node = queue.pop();
-		reversedIterable(node.getChildren()).forEach(c -> queue.push(c));
+		reversedIterable(node.getChildren()).forEach(queue::push);
 		return node;
 	}
 }

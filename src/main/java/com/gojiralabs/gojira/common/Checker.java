@@ -4,6 +4,10 @@ import javax.annotation.Nonnull;
 
 public class Checker {
 
+	private Checker() {
+		// private constructor to avoid instantiation
+	}
+
 	public static <T> T notNull(T object) {
 		if (object == null) {
 			throw new NullPointerException();

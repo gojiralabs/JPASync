@@ -55,12 +55,12 @@ public class ArrayTreeNode<T> implements TreeNode<T> {
 
 	@Override
 	public void addChildrenNodes(@Nonnull Collection<? extends TreeNode<T>> children) {
-		children.forEach(c -> addChild(c));
+		children.forEach(this::addChild);
 	}
 
 	@Override
 	public void addChildrenContent(@Nonnull Collection<T> children) {
-		children.forEach(c -> addChild(c));
+		children.forEach(this::addChild);
 	}
 
 	@Override

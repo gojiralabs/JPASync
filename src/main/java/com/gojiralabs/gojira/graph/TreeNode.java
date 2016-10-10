@@ -41,11 +41,11 @@ public interface TreeNode<T> extends Iterable<TreeNode<T>> {
 	}
 
 	default Iterator<TreeNode<T>> depthFirstIterator() {
-		return new DepthFirstIterator<T>(this);
+		return new DepthFirstIterator<>(this);
 	}
 
 	default Iterator<TreeNode<T>> breadthFirstIterator() {
-		return new BreadthFirstIterator<T>(this);
+		return new BreadthFirstIterator<>(this);
 	}
 
 	@Override

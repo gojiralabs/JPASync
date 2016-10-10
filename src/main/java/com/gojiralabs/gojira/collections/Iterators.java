@@ -3,10 +3,15 @@ package com.gojiralabs.gojira.collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.NoSuchElementException;
 
 import javax.annotation.Nonnull;
 
-public class Iterators<T> {
+public class Iterators {
+
+	private Iterators() {
+		// private constructor to avoid instantiation
+	}
 
 	public static <T> Iterator<T> reversedIterator(@Nonnull List<T> list) {
 		return reversedIterable(list).iterator();
@@ -34,12 +39,12 @@ public class Iterators<T> {
 
 		@Override
 		public Iterator<E> iterator() {
-			return new ReversedIterator<E>(listIterator);
+			return new ReversedIterator<>(listIterator);
 		}
 	}
 
 	private static class ReversedIterator<E> implements Iterator<E> {
-		public ListIterator<E> listIterator;
+		private ListIterator<E> listIterator;
 
 		public ReversedIterator(ListIterator<E> listIterator) {
 			this.listIterator = listIterator;
@@ -52,6 +57,9 @@ public class Iterators<T> {
 
 		@Override
 		public E next() {
+			if (!hasNext()) {
+				throw new NoSuchElementException();
+			}
 			return listIterator.previous();
 		}
 
