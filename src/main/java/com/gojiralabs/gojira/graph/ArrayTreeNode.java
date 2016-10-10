@@ -1,6 +1,6 @@
-package com.gojiralabs.dwtca.graph;
+package com.gojiralabs.gojira.graph;
 
-import static com.gojiralabs.dwtca.common.Checker.notNull;
+import static com.gojiralabs.gojira.common.Checker.notNull;
 
 import java.util.ArrayList;
 import java.util.Collection;

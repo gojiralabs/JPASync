@@ -1,13 +1,16 @@
-package com.gojiralabs.dwtca.graph;
+package com.gojiralabs.gojira.graph;
+
+import static com.gojiralabs.gojira.collections.Iterators.reversedIterable;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Iterator;
 
-public class BreadthFirstIterator<T> implements Iterator<TreeNode<T>> {
+public class DepthFirstIterator<T> implements Iterator<TreeNode<T>> {
+
 	private final Deque<TreeNode<T>> queue = new ArrayDeque<>();
 
-	public BreadthFirstIterator(TreeNode<T> root) {
+	public DepthFirstIterator(TreeNode<T> root) {
 		queue.push(root);
 	}
 
@@ -19,7 +22,7 @@ public class BreadthFirstIterator<T> implements Iterator<TreeNode<T>> {
 	@Override
 	public TreeNode<T> next() {
 		TreeNode<T> node = queue.pop();
-		queue.addAll(node.getChildren());
+		reversedIterable(node.getChildren()).forEach(c -> queue.push(c));
 		return node;
 	}
 }

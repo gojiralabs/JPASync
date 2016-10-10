@@ -1,4 +1,4 @@
-package com.gojiralabs.dwtca.collections;
+package com.gojiralabs.gojira.collections;
 
 import java.util.Iterator;
 import java.util.List;

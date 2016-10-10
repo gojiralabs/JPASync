@@ -1,4 +1,4 @@
-package com.gojiralabs.dwtca.common;
+package com.gojiralabs.gojira.common;
 
 import javax.annotation.Nonnull;
 
