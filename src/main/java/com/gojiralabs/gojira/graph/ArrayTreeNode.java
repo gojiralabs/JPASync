@@ -1,6 +1,6 @@
 package com.gojiralabs.gojira.graph;
 
-import static com.gojiralabs.gojira.common.Checker.notNull;
+import static java.util.Objects.requireNonNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -45,7 +45,7 @@ public class ArrayTreeNode<T> implements TreeNode<T> {
 
 	@Override
 	public boolean removeChild(@Nonnull TreeNode<T> child) {
-		return children.remove(notNull(child));
+		return children.remove(requireNonNull(child));
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package com.gojiralabs.gojira.graph;
 
-import static com.gojiralabs.gojira.common.Checker.notNull;
+import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,7 +13,7 @@ public class ForwardingTreeNode<T> implements TreeNode<T> {
 	private final TreeNode<T> delegate;
 
 	public ForwardingTreeNode(@Nonnull TreeNode<T> treeNode) {
-		this.delegate = notNull(treeNode);
+		this.delegate = requireNonNull(treeNode);
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class ForwardingTreeNode<T> implements TreeNode<T> {
 	public List<TreeNode<T>> getChildren() {
 		return delegate.getChildren();
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return delegate.hashCode();

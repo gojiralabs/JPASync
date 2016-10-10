@@ -3,6 +3,8 @@ package com.gojiralabs.gojira.graph;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -30,6 +32,10 @@ public interface TreeNode<T> extends Iterable<TreeNode<T>> {
 	TreeNode<T> getParent();
 
 	List<TreeNode<T>> getChildren();
+
+	default Stream<TreeNode<T>> stream() {
+		return StreamSupport.stream(spliterator(), false);
+	}
 
 	default TreeNode<T> searchNode(@Nullable T nodeContent) {
 		for (TreeNode<T> node : this) {
