@@ -3,13 +3,13 @@ package com.gojiralabs.gojira.graph;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.google.common.base.Objects;
 
 public interface TreeNode<T> extends Iterable<TreeNode<T>> {
 
@@ -39,7 +39,7 @@ public interface TreeNode<T> extends Iterable<TreeNode<T>> {
 
 	default TreeNode<T> searchNode(@Nullable T nodeContent) {
 		for (TreeNode<T> node : this) {
-			if (Objects.equal(node.getContent(), nodeContent)) {
+			if (Objects.equals(node.getContent(), nodeContent)) {
 				return node;
 			}
 		}
