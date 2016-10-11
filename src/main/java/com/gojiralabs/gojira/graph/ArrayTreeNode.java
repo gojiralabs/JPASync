@@ -85,7 +85,7 @@ public class ArrayTreeNode<T> implements TreeNode<T> {
 
 	@Override
 	public boolean equals(Object obj) {
-		return obj != null && obj instanceof ArrayTreeNode && children.equals(((TreeNode<?>) obj).getChildren());
+		return obj != null && obj.getClass().equals(getClass()) && children.equals(((TreeNode<?>) obj).getChildren());
 	}
 
 	@Override

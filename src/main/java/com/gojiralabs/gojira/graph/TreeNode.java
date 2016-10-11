@@ -10,7 +10,6 @@ import java.util.stream.StreamSupport;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-
 public interface TreeNode<T> extends Iterable<TreeNode<T>> {
 
 	void setParent(@Nullable TreeNode<T> parent);

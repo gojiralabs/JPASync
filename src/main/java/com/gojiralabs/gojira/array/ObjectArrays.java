@@ -3,6 +3,7 @@ package com.gojiralabs.gojira.array;
 import static com.gojiralabs.gojira.common.Checker.checkArrayIndex;
 
 import java.lang.reflect.Array;
+import java.util.Objects;
 
 public class ObjectArrays {
 	private ObjectArrays() {
@@ -12,7 +13,7 @@ public class ObjectArrays {
 	public static <T> int indexOf(T[] array, Object element) {
 		int index = 0;
 		for (Object current : array) {
-			if (current == element) {
+			if (Objects.equals(current, element)) {
 				return index;
 			}
 			index++;

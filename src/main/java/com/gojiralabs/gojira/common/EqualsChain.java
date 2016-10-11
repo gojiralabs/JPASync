@@ -23,7 +23,7 @@ public class EqualsChain {
 		return !pairs.stream().anyMatch(p -> !p.isEqual());
 	}
 
-	private class ComparingPair {
+	private static class ComparingPair {
 		private Object left;
 		private Object right;
 

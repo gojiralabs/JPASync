@@ -65,7 +65,7 @@ public class ForwardingTreeNode<T> implements TreeNode<T> {
 	public List<TreeNode<T>> getChildren() {
 		return delegate.getChildren();
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return delegate.hashCode();
