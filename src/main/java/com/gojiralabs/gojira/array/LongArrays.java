@@ -51,19 +51,19 @@ public class LongArrays {
 		System.arraycopy(array, toIndex + 1, copy, fromIndex, array.length - toIndex - 1);
 		return copy;
 	}
-	
-	public Long[] boxArray(long[] array) {
+
+	public static Long[] box(long[] array) {
 		Long[] copy = new Long[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
 	}
 
-	public long[] unboxArray(Long[] array) {
+	public static long[] unbox(Long[] array) {
 		long[] copy = new long[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
 	}
-	
+
 	public static long[] deepCopy(long[] array) {
 		long[] copy = new long[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
@@ -80,5 +80,9 @@ public class LongArrays {
 			copy[right--] = holder;
 		}
 		return copy;
+	}
+
+	public static long[] concat(long[] firstArray, long[] secondArray) {
+		return add(firstArray, secondArray, firstArray.length);
 	}
 }

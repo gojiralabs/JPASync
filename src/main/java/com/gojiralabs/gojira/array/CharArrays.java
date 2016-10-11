@@ -52,13 +52,13 @@ public class CharArrays {
 		return copy;
 	}
 
-	public Character[] boxArray(char[] array) {
+	public static Character[] box(char[] array) {
 		Character[] copy = new Character[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
 	}
 
-	public char[] unboxArray(Character[] array) {
+	public static char[] unbox(Character[] array) {
 		char[] copy = new char[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
@@ -80,5 +80,9 @@ public class CharArrays {
 			copy[right--] = holder;
 		}
 		return copy;
+	}
+
+	public static char[] concat(char[] firstArray, char[] secondArray) {
+		return add(firstArray, secondArray, firstArray.length);
 	}
 }

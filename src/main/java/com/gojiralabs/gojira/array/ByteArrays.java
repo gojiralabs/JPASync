@@ -52,13 +52,13 @@ public class ByteArrays {
 		return copy;
 	}
 
-	public Byte[] boxArray(byte[] array) {
+	public static Byte[] box(byte[] array) {
 		Byte[] copy = new Byte[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
 	}
 
-	public byte[] unboxArray(Byte[] array) {
+	public static byte[] unbox(Byte[] array) {
 		byte[] copy = new byte[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
@@ -80,5 +80,9 @@ public class ByteArrays {
 			copy[right--] = holder;
 		}
 		return copy;
+	}
+
+	public static byte[] concat(byte[] firstArray, byte[] secondArray) {
+		return add(firstArray, secondArray, firstArray.length);
 	}
 }

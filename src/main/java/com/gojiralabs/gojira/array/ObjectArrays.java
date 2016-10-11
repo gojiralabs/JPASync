@@ -82,4 +82,8 @@ public class ObjectArrays {
 		}
 		return copy;
 	}
+
+	public static <T> T[] concat(T[] firstArray, T[] secondArray) {
+		return add(firstArray, secondArray, firstArray.length);
+	}
 }

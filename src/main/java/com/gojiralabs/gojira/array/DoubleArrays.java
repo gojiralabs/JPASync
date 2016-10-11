@@ -52,18 +52,18 @@ public class DoubleArrays {
 		return copy;
 	}
 
-	public Double[] boxArray(double[] array) {
+	public static Double[] box(double[] array) {
 		Double[] copy = new Double[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
 	}
 
-	public double[] unboxArray(Double[] array) {
+	public static double[] unbox(Double[] array) {
 		double[] copy = new double[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
 	}
-	
+
 	public static double[] deepCopy(double[] array) {
 		double[] copy = new double[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
@@ -80,5 +80,9 @@ public class DoubleArrays {
 			copy[right--] = holder;
 		}
 		return copy;
+	}
+
+	public static double[] concat(double[] firstArray, double[] secondArray) {
+		return add(firstArray, secondArray, firstArray.length);
 	}
 }

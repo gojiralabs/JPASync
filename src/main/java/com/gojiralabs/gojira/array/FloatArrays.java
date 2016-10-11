@@ -52,18 +52,18 @@ public class FloatArrays {
 		return copy;
 	}
 
-	public Float[] boxArray(float[] array) {
+	public static Float[] box(float[] array) {
 		Float[] copy = new Float[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
 	}
 
-	public float[] unboxArray(Float[] array) {
+	public static float[] unbox(Float[] array) {
 		float[] copy = new float[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
 	}
-	
+
 	public static float[] deepCopy(float[] array) {
 		float[] copy = new float[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
@@ -80,5 +80,9 @@ public class FloatArrays {
 			copy[right--] = holder;
 		}
 		return copy;
+	}
+
+	public static float[] concat(float[] firstArray, float[] secondArray) {
+		return add(firstArray, secondArray, firstArray.length);
 	}
 }

@@ -51,19 +51,19 @@ public class ShortArrays {
 		System.arraycopy(array, toIndex + 1, copy, fromIndex, array.length - toIndex - 1);
 		return copy;
 	}
-	
-	public Short[] boxArray(short[] array) {
+
+	public static Short[] box(short[] array) {
 		Short[] copy = new Short[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
 	}
 
-	public short[] unboxArray(Short[] array) {
+	public static short[] unbox(Short[] array) {
 		short[] copy = new short[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
 	}
-	
+
 	public static short[] deepCopy(short[] array) {
 		short[] copy = new short[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
@@ -80,5 +80,9 @@ public class ShortArrays {
 			copy[right--] = holder;
 		}
 		return copy;
+	}
+
+	public static short[] concat(short[] firstArray, short[] secondArray) {
+		return add(firstArray, secondArray, firstArray.length);
 	}
 }

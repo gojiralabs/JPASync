@@ -52,13 +52,13 @@ public class BooleanArrays {
 		return copy;
 	}
 
-	public Boolean[] boxArray(boolean[] array) {
+	public static Boolean[] box(boolean[] array) {
 		Boolean[] copy = new Boolean[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
 	}
 
-	public boolean[] unboxArray(Boolean[] array) {
+	public static boolean[] unbox(Boolean[] array) {
 		boolean[] copy = new boolean[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
@@ -80,5 +80,9 @@ public class BooleanArrays {
 			copy[right--] = holder;
 		}
 		return copy;
+	}
+
+	public static boolean[] concat(boolean[] firstArray, boolean[] secondArray) {
+		return add(firstArray, secondArray, firstArray.length);
 	}
 }

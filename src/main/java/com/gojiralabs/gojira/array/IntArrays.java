@@ -52,13 +52,13 @@ public class IntArrays {
 		return copy;
 	}
 
-	public Integer[] boxArray(int[] array) {
+	public static Integer[] box(int[] array) {
 		Integer[] copy = new Integer[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
 	}
 
-	public int[] unboxArray(Integer[] array) {
+	public static int[] unbox(Integer[] array) {
 		int[] copy = new int[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
@@ -80,5 +80,9 @@ public class IntArrays {
 			copy[right--] = holder;
 		}
 		return copy;
+	}
+
+	public static int[] concat(int[] firstArray, int[] secondArray) {
+		return add(firstArray, secondArray, firstArray.length);
 	}
 }
