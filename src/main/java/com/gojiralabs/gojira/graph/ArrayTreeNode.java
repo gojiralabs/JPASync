@@ -5,12 +5,12 @@ import static java.util.Objects.requireNonNull;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class ArrayTreeNode<T> implements TreeNode<T> {
-
+	@Nonnull
 	private final List<TreeNode<T>> children = new ArrayList<>();
 	private TreeNode<T> parent;
 	private T content;
@@ -20,12 +20,12 @@ public class ArrayTreeNode<T> implements TreeNode<T> {
 		this.content = content;
 	}
 
-	public ArrayTreeNode(@Nullable T content) {
+	public ArrayTreeNode(T content) {
 		this(null, content);
 	}
 
 	@Override
-	public void setParent(@Nullable TreeNode<T> parent) {
+	public void setParent(TreeNode<T> parent) {
 		this.parent = parent;
 		if (parent != null) {
 			parent.getChildren().add(this);
@@ -33,13 +33,15 @@ public class ArrayTreeNode<T> implements TreeNode<T> {
 	}
 
 	@Override
+	@Nonnull
 	public TreeNode<T> addChild(@Nonnull TreeNode<T> child) {
 		child.setParent(this);
 		return child;
 	}
 
 	@Override
-	public TreeNode<T> addChild(@Nullable T content) {
+	@Nonnull
+	public TreeNode<T> addChild(T content) {
 		return addChild(new ArrayTreeNode<>(content));
 	}
 
@@ -69,6 +71,7 @@ public class ArrayTreeNode<T> implements TreeNode<T> {
 	}
 
 	@Override
+	@Nonnull
 	public List<TreeNode<T>> getChildren() {
 		return children;
 	}
@@ -80,12 +83,13 @@ public class ArrayTreeNode<T> implements TreeNode<T> {
 
 	@Override
 	public int hashCode() {
-		return getChildren().hashCode();
+		return Objects.hash(content);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean equals(Object obj) {
-		return obj != null && obj.getClass().equals(getClass()) && children.equals(((TreeNode<?>) obj).getChildren());
+		return obj != null && obj.getClass().equals(getClass()) && Objects.equals(content, ((TreeNode<T>) obj).getContent());
 	}
 
 	@Override

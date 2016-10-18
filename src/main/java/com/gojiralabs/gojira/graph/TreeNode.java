@@ -1,6 +1,9 @@
 package com.gojiralabs.gojira.graph;
 
+import static com.gojiralabs.gojira.collections.Iterators.reversedIterable;
+
 import java.util.Collection;
+import java.util.Deque;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
@@ -8,15 +11,16 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public interface TreeNode<T> extends Iterable<TreeNode<T>> {
 
-	void setParent(@Nullable TreeNode<T> parent);
+	void setParent(TreeNode<T> parent);
 
+	@Nonnull
 	TreeNode<T> addChild(@Nonnull TreeNode<T> child);
 
-	TreeNode<T> addChild(@Nullable T content);
+	@Nonnull
+	TreeNode<T> addChild(T content);
 
 	void addChildrenNodes(@Nonnull Collection<? extends TreeNode<T>> children);
 
@@ -30,13 +34,16 @@ public interface TreeNode<T> extends Iterable<TreeNode<T>> {
 
 	TreeNode<T> getParent();
 
+	@Nonnull
 	List<TreeNode<T>> getChildren();
 
+	@SuppressWarnings("null")
+	@Nonnull
 	default Stream<TreeNode<T>> stream() {
 		return StreamSupport.stream(spliterator(), false);
 	}
 
-	default TreeNode<T> searchNode(@Nullable T nodeContent) {
+	default TreeNode<T> searchNode(T nodeContent) {
 		for (TreeNode<T> node : this) {
 			if (Objects.equals(node.getContent(), nodeContent)) {
 				return node;
@@ -45,15 +52,28 @@ public interface TreeNode<T> extends Iterable<TreeNode<T>> {
 		return null;
 	}
 
+	@Nonnull
 	default Iterator<TreeNode<T>> depthFirstIterator() {
-		return new DepthFirstIterator<>(this);
+		return new TreeIterator<T>(this) {
+			@Override
+			protected void queueChildren(TreeNode<T> node, Deque<TreeNode<T>> queue) {
+				reversedIterable(node.getChildren()).forEach(queue::push);
+			}
+		};
 	}
 
+	@Nonnull
 	default Iterator<TreeNode<T>> breadthFirstIterator() {
-		return new BreadthFirstIterator<>(this);
+		return new TreeIterator<T>(this) {
+			@Override
+			protected void queueChildren(TreeNode<T> node, Deque<TreeNode<T>> queue) {
+				queue.addAll(node.getChildren());
+			}
+		};
 	}
 
 	@Override
+	@Nonnull
 	default Iterator<TreeNode<T>> iterator() {
 		return breadthFirstIterator();
 	}

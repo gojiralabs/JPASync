@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class ForwardingTreeNode<T> implements TreeNode<T> {
 
@@ -17,17 +16,19 @@ public class ForwardingTreeNode<T> implements TreeNode<T> {
 	}
 
 	@Override
-	public void setParent(@Nullable TreeNode<T> parent) {
+	public void setParent(TreeNode<T> parent) {
 		delegate.setParent(parent);
 	}
 
 	@Override
+	@Nonnull
 	public TreeNode<T> addChild(@Nonnull TreeNode<T> child) {
 		return delegate.addChild(child);
 	}
 
 	@Override
-	public TreeNode<T> addChild(@Nullable T content) {
+	@Nonnull
+	public TreeNode<T> addChild(T content) {
 		return delegate.addChild(content);
 	}
 
@@ -62,6 +63,7 @@ public class ForwardingTreeNode<T> implements TreeNode<T> {
 	}
 
 	@Override
+	@Nonnull
 	public List<TreeNode<T>> getChildren() {
 		return delegate.getChildren();
 	}
@@ -74,5 +76,10 @@ public class ForwardingTreeNode<T> implements TreeNode<T> {
 	@Override
 	public boolean equals(Object obj) {
 		return delegate.equals(obj);
+	}
+
+	@Override
+	public String toString() {
+		return delegate.toString();
 	}
 }
