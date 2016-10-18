@@ -13,40 +13,49 @@ public class Iterators {
 		// private constructor to avoid instantiation
 	}
 
+	@SuppressWarnings("null")
+	@Nonnull
 	public static <T> Iterator<T> reversedIterator(@Nonnull List<T> list) {
 		return reversedIterable(list).iterator();
 	}
 
+	@SuppressWarnings("null")
+	@Nonnull
 	public static <T> Iterator<T> reversedIterator(@Nonnull ListIterator<T> listIterator) {
 		return reversedIterable(listIterator).iterator();
 	}
 
+	@SuppressWarnings("null")
+	@Nonnull
 	public static <T> Iterable<T> reversedIterable(@Nonnull List<T> list) {
 		return reversedIterable(list.listIterator(list.size()));
 	}
 
+	@Nonnull
 	public static <T> Iterable<T> reversedIterable(@Nonnull ListIterator<T> listIterator) {
 		return new ReversedIterable<>(listIterator);
 	}
 
 	private static class ReversedIterable<E> implements Iterable<E> {
-
+		@Nonnull
 		private ListIterator<E> listIterator;
 
-		public ReversedIterable(ListIterator<E> listIterator) {
+		public ReversedIterable(@Nonnull ListIterator<E> listIterator) {
 			this.listIterator = listIterator;
 		}
 
 		@Override
+		@Nonnull
 		public Iterator<E> iterator() {
 			return new ReversedIterator<>(listIterator);
 		}
 	}
 
 	private static class ReversedIterator<E> implements Iterator<E> {
+		@Nonnull
 		private ListIterator<E> listIterator;
 
-		public ReversedIterator(ListIterator<E> listIterator) {
+		public ReversedIterator(@Nonnull ListIterator<E> listIterator) {
 			this.listIterator = listIterator;
 		}
 
