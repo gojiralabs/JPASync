@@ -1,11 +1,14 @@
 package com.gojiralabs.gojira.array;
 
+import static com.gojiralabs.gojira.common.Checker.checkArgument;
 import static com.gojiralabs.gojira.common.Checker.checkArrayIndex;
 
 import java.lang.reflect.Array;
 import java.util.Objects;
 
 import javax.annotation.Nonnull;
+
+import com.gojiralabs.gojira.common.Checker;
 
 public class ObjectArrays {
 	private ObjectArrays() {
@@ -57,6 +60,7 @@ public class ObjectArrays {
 	@SuppressWarnings({ "unchecked", "null" })
 	@Nonnull
 	public static <T> T[] remove(@Nonnull T[] array, int fromIndex, int toIndex) {
+		checkArgument(fromIndex <= toIndex, "fromIndex cannot be greater than toIndex");
 		checkArrayIndex(array, fromIndex);
 		checkArrayIndex(array, toIndex);
 		T[] copy = (T[]) Array.newInstance(array.getClass().getComponentType(), array.length - toIndex + fromIndex - 1);

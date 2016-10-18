@@ -1,5 +1,6 @@
 package com.gojiralabs.gojira.array;
 
+import static com.gojiralabs.gojira.common.Checker.checkArgument;
 import static com.gojiralabs.gojira.common.Checker.checkArrayIndex;
 
 import javax.annotation.Nonnull;
@@ -51,6 +52,7 @@ public class DoubleArrays {
 
 	@Nonnull
 	public static double[] remove(@Nonnull double[] array, int fromIndex, int toIndex) {
+		checkArgument(fromIndex <= toIndex, "fromIndex cannot be greater than toIndex");
 		checkArrayIndex(array, fromIndex);
 		checkArrayIndex(array, toIndex);
 		double[] copy = new double[array.length - toIndex + fromIndex - 1];
