@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class ArrayGroup<T> {
 	private final List<T[]> group = new ArrayList<>();
@@ -27,7 +26,7 @@ public class ArrayGroup<T> {
 		throw new ArrayIndexOutOfBoundsException(index);
 	}
 
-	public void set(int index, @Nullable T value) {
+	public void set(int index,  T value) {
 		int position = index;
 		for (T[] array : group) {
 			if (position < array.length) {
