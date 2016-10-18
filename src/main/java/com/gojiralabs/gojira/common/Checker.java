@@ -10,14 +10,16 @@ public class Checker {
 
 	public static <T> T notNull(T object) {
 		if (object == null) {
-			throw new NullPointerException();
+			// this is really supposed to throw a NullPointerException
+			throw new NullPointerException(); // NOSONAR
 		}
 		return object;
 	}
 
 	public static <T> T notNull(T object, @Nonnull String message, @Nonnull Object... messageParameters) {
 		if (object == null) {
-			throw new NullPointerException(String.format(message, messageParameters));
+			// this is really supposed to throw a NullPointerException
+			throw new NullPointerException(String.format(message, messageParameters)); // NOSONAR
 		}
 		return object;
 	}
@@ -70,7 +72,7 @@ public class Checker {
 		}
 	}
 
-	public static void checkArgument(boolean condition, @Nonnull String message, Object... messageParameters) {
+	public static void checkArgument(boolean condition, @Nonnull String message, @Nonnull Object... messageParameters) {
 		if (!condition) {
 			throw new IllegalArgumentException(String.format(message, messageParameters));
 		}
