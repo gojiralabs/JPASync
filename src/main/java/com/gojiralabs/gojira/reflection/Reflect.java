@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.annotation.Nonnull;
+
 public class Reflect {
 	public static final Reflect SILENT = new Reflect(true);
 	public static final Reflect UNCHECKED = new Reflect(false);
@@ -21,7 +23,7 @@ public class Reflect {
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T> Class<T> forName(String className) {
+	public <T> Class<T> forName(@Nonnull String className) {
 		try {
 			return (Class<T>) Class.forName(className);
 		} catch (final ClassNotFoundException e) {
@@ -29,7 +31,7 @@ public class Reflect {
 		}
 	}
 
-	public <T> T newInstance(Class<T> type) {
+	public <T> T newInstance(@Nonnull Class<T> type) {
 		try {
 			return type.newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
@@ -37,7 +39,7 @@ public class Reflect {
 		}
 	}
 
-	public <T> Constructor<T> getConstructor(Class<T> type, Class<?>... parameterTypes) {
+	public <T> Constructor<T> getConstructor(@Nonnull Class<T> type, @Nonnull Class<?>... parameterTypes) {
 		try {
 			return type.getConstructor(parameterTypes);
 		} catch (NoSuchMethodException | SecurityException e) {
@@ -45,7 +47,7 @@ public class Reflect {
 		}
 	}
 
-	public <T> Constructor<T> getDeclaredConstructor(Class<T> type, Class<?>... parameterTypes) {
+	public <T> Constructor<T> getDeclaredConstructor(@Nonnull Class<T> type, @Nonnull Class<?>... parameterTypes) {
 		try {
 			return type.getDeclaredConstructor(parameterTypes);
 		} catch (NoSuchMethodException | SecurityException e) {
@@ -53,7 +55,7 @@ public class Reflect {
 		}
 	}
 
-	public Method getMethod(Class<?> type, String methodName, Class<?>... parameterTypes) {
+	public Method getMethod(@Nonnull Class<?> type, @Nonnull String methodName, @Nonnull Class<?>... parameterTypes) {
 		try {
 			return type.getMethod(methodName, parameterTypes);
 		} catch (NoSuchMethodException | SecurityException e) {
@@ -61,7 +63,7 @@ public class Reflect {
 		}
 	}
 
-	public Set<Method> getMethodsNamed(Class<?> type, String methodName) {
+	public Set<Method> getMethodsNamed(@Nonnull Class<?> type, @Nonnull String methodName) {
 		Set<Method> methods = new HashSet<>();
 		for (Method method : type.getMethods()) {
 			if (method.getName().equals(methodName)) {
@@ -71,7 +73,7 @@ public class Reflect {
 		return methods;
 	}
 
-	public Method getDeclaredMethod(Class<?> type, String methodName, Class<?>... parameterTypes) {
+	public Method getDeclaredMethod(@Nonnull Class<?> type, @Nonnull String methodName, @Nonnull Class<?>... parameterTypes) {
 		try {
 			return type.getDeclaredMethod(methodName, parameterTypes);
 		} catch (NoSuchMethodException | SecurityException e) {
@@ -79,7 +81,7 @@ public class Reflect {
 		}
 	}
 
-	public Set<Method> getDeclaredMethodsNamed(Class<?> type, String methodName) {
+	public Set<Method> getDeclaredMethodsNamed(@Nonnull Class<?> type, @Nonnull String methodName) {
 		Set<Method> methods = new HashSet<>();
 		for (Method method : type.getDeclaredMethods()) {
 			if (method.getName().equals(methodName)) {
@@ -89,7 +91,7 @@ public class Reflect {
 		return methods;
 	}
 
-	public Field getField(Class<?> type, String fieldName) {
+	public Field getField(@Nonnull Class<?> type, @Nonnull String fieldName) {
 		try {
 			return type.getField(fieldName);
 		} catch (NoSuchFieldException | SecurityException e) {
@@ -97,7 +99,7 @@ public class Reflect {
 		}
 	}
 
-	public Field getDeclaredField(Class<?> type, String fieldName) {
+	public Field getDeclaredField(@Nonnull Class<?> type, @Nonnull String fieldName) {
 		try {
 			return type.getDeclaredField(fieldName);
 		} catch (NoSuchFieldException | SecurityException e) {
@@ -106,7 +108,7 @@ public class Reflect {
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T> T invoke(Method method, Object object, Object... arguments) {
+	public <T> T invoke(@Nonnull Method method, @Nonnull Object object, @Nonnull Object... arguments) {
 		try {
 			return (T) method.invoke(object, arguments);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
@@ -115,7 +117,7 @@ public class Reflect {
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T> T get(Field field, Object object) {
+	public <T> T get(@Nonnull Field field, @Nonnull Object object) {
 		field.setAccessible(true);
 		try {
 			return (T) field.get(object);
@@ -124,7 +126,7 @@ public class Reflect {
 		}
 	}
 
-	public void set(Field field, Object object, Object value) {
+	public void set(@Nonnull Field field, @Nonnull Object object, @Nonnull Object value) {
 		field.setAccessible(true);
 		try {
 			field.set(object, value);
@@ -133,21 +135,28 @@ public class Reflect {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "null" })
+	@Nonnull
 	public <T> Set<Constructor<T>> getConstructorsAnnotatedWith(Class<T> type, Class<? extends Annotation> annotationClass) {
 		Constructor<?>[] constructors = type.getDeclaredConstructors();
 		return filterAccessibles(Arrays.copyOf(constructors, constructors.length, Constructor[].class), annotationClass);
 	}
 
-	public Set<Method> getMethodsAnnotatedWith(Class<?> type, Class<? extends Annotation> annotationClass) {
+	@SuppressWarnings("null")
+	@Nonnull
+	public Set<Method> getMethodsAnnotatedWith(@Nonnull Class<?> type, @Nonnull Class<? extends Annotation> annotationClass) {
 		return filterAccessibles(type.getDeclaredMethods(), annotationClass);
 	}
 
-	public Set<Field> getFieldsAnnotatedWith(Class<?> type, Class<? extends Annotation> annotationClass) {
+	@SuppressWarnings("null")
+	@Nonnull
+	public Set<Field> getFieldsAnnotatedWith(@Nonnull Class<?> type, @Nonnull Class<? extends Annotation> annotationClass) {
 		return filterAccessibles(type.getDeclaredFields(), annotationClass);
 	}
 
-	private <T extends AccessibleObject> Set<T> filterAccessibles(T[] accessibles, Class<? extends Annotation> annotationClass) {
+	@Nonnull
+	private <T extends AccessibleObject> Set<T> filterAccessibles(@Nonnull T[] accessibles,
+			@Nonnull Class<? extends Annotation> annotationClass) {
 		Set<T> filtered = new HashSet<>();
 		for (T accessible : accessibles) {
 			if (accessible.isAnnotationPresent(annotationClass)) {
@@ -157,7 +166,7 @@ public class Reflect {
 		return filtered;
 	}
 
-	private <T> T handleException(Exception e) {
+	private <T> T handleException(@Nonnull Exception e) {
 		if (silenceExceptions) {
 			return null;
 		}
