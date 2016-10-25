@@ -1,7 +1,5 @@
 package com.gojiralabs.gojira.bean;
 
-import javax.annotation.Nonnull;
-
 public class BeanException extends RuntimeException {
 	private static final long serialVersionUID = 2489652540420155157L;
 
@@ -17,7 +15,7 @@ public class BeanException extends RuntimeException {
 		super(message, cause);
 	}
 
-	public BeanException(Throwable cause, @Nonnull String messageFormat, Object... messageParameters) {
+	public BeanException(Throwable cause, String messageFormat, Object... messageParameters) {
 		super(String.format(messageFormat, messageParameters), cause);
 	}
 
@@ -25,7 +23,7 @@ public class BeanException extends RuntimeException {
 		super(message);
 	}
 
-	public BeanException(@Nonnull String messageFormat, Object... messageParameters) {
+	public BeanException(String messageFormat, Object... messageParameters) {
 		super(String.format(messageFormat, messageParameters));
 	}
 

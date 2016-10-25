@@ -1,26 +1,32 @@
 package com.gojiralabs.gojira.bean;
 
-import javax.annotation.Nonnull;
-
 import com.gojiralabs.gojira.cache.Cache;
 import com.gojiralabs.gojira.cache.HashCache;
 
 public class Beans {
-	public static final Beans UNCHECKED = new Beans(false);
-	public static final Beans SILENT = new Beans(true);
-
-	private final Cache<Class<?>, Bean> cache;
-
-	@SuppressWarnings("null")
-	private Beans(boolean silenceExceptions) {
-		cache = HashCache.from(k -> new Bean(k, silenceExceptions));
+	private Beans() {
+		// private constructor to avoid instantiation
 	}
 
-	public <T> T get(@Nonnull Object bean, @Nonnull String property) {
-		return cache.get(bean.getClass()).get(bean, property);
+	private static final Cache<Class<?>, Bean> cache = HashCache.from(k -> new Bean(k));
+
+	public static <T> T get(Object bean, String property) {
+		return getBean(bean.getClass()).get(bean, property);
 	}
 
-	public void set(@Nonnull Object bean, @Nonnull String property,  Object value) {
-		cache.get(bean.getClass()).set(bean, property, value);
+	public static void set(Object bean, String property, Object value) {
+		getBean(bean.getClass()).set(bean, property, value);
+	}
+
+	public static <T> T getNested(Object bean, String nestedProperty) {
+		return getBean(bean.getClass()).getNested(bean, nestedProperty, cache);
+	}
+
+	public static void setNested(Object bean, String nestedProperty, Object value) {
+		getBean(bean.getClass()).setNested(bean, nestedProperty, value, cache);
+	}
+
+	public static Bean getBean(Class<?> beanClass) {
+		return cache.get(beanClass);
 	}
 }
