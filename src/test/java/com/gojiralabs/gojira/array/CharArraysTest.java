@@ -11,51 +11,51 @@ public class CharArraysTest {
 	@Test
 	public void testIndexOf1() {
 		char[] array = new char[] { 'a', 'b', 'c', 'd' };
-		assertThat(CharArrays.indexOf(array, (char) 'c'), is(2));
+		assertThat(CharArrays.indexOf(array, 'c'), is(2));
 	}
 
 	@Test
 	public void testIndexOf2() {
 		char[] array = new char[] { 'a', 'b', 'c', 'd' };
-		assertThat(CharArrays.indexOf(array, (char) 'e'), is(-1));
+		assertThat(CharArrays.indexOf(array, 'e'), is(-1));
 	}
 
 	@Test
 	public void testContains1() {
 		char[] array = new char[] { 'a', 'b', 'c', 'd' };
-		assertThat(CharArrays.contains(array, (char) 'c'), is(true));
+		assertThat(CharArrays.contains(array, 'c'), is(true));
 	}
 
 	@Test
 	public void testContains2() {
 		char[] array = new char[] { 'a', 'b', 'c', 'd' };
-		assertThat(CharArrays.contains(array, (char) 'e'), is(false));
+		assertThat(CharArrays.contains(array, 'e'), is(false));
 	}
 
 	@Test
 	public void testAddCharacterArrayCharacter() {
 		char[] array = new char[] { 'a', 'b', 'c', 'd' };
-		assertThat(CharArrays.add(array, (char) 'e'), is(new char[] { 'a', 'b', 'c', 'd', 'e' }));
+		assertThat(CharArrays.add(array, 'e'), is(new char[] { 'a', 'b', 'c', 'd', 'e' }));
 		assertThat(array, is(new char[] { 'a', 'b', 'c', 'd' }));
 	}
 
 	@Test
 	public void testAddCharacterArrayCharacterInt1() {
 		char[] array = new char[] { 'a', 'b', 'c', 'd' };
-		assertThat(CharArrays.add(array, (char) 'e', 1), is(new char[] { 'a', 'e', 'b', 'c', 'd' }));
+		assertThat(CharArrays.add(array, 'e', 1), is(new char[] { 'a', 'e', 'b', 'c', 'd' }));
 		assertThat(array, is(new char[] { 'a', 'b', 'c', 'd' }));
 	}
 
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void testAddCharacterArrayCharacterInt2() {
 		char[] array = new char[] { 'a', 'b', 'c', 'd' };
-		CharArrays.add(array, (char) 'e', 5);
+		CharArrays.add(array, 'e', 5);
 	}
 
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void testAddCharacterArrayCharacterInt3() {
 		char[] array = new char[] { 'a', 'b', 'c', 'd' };
-		CharArrays.add(array, (char) 'e', -1);
+		CharArrays.add(array, 'e', -1);
 	}
 
 	@Test

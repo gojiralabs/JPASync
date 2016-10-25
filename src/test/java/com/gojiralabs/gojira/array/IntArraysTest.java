@@ -10,51 +10,51 @@ public class IntArraysTest {
 	@Test
 	public void testIndexOf1() {
 		int[] array = new int[] { 0, 1, 2, 3 };
-		assertThat(IntArrays.indexOf(array, (int) 2), is(2));
+		assertThat(IntArrays.indexOf(array, 2), is(2));
 	}
 
 	@Test
 	public void testIndexOf2() {
 		int[] array = new int[] { 0, 1, 2, 3 };
-		assertThat(IntArrays.indexOf(array, (int) 4), is(-1));
+		assertThat(IntArrays.indexOf(array, 4), is(-1));
 	}
 
 	@Test
 	public void testContains1() {
 		int[] array = new int[] { 0, 1, 2, 3 };
-		assertThat(IntArrays.contains(array, (int) 2), is(true));
+		assertThat(IntArrays.contains(array, 2), is(true));
 	}
 
 	@Test
 	public void testContains2() {
 		int[] array = new int[] { 0, 1, 2, 3 };
-		assertThat(IntArrays.contains(array, (int) 4), is(false));
+		assertThat(IntArrays.contains(array, 4), is(false));
 	}
 
 	@Test
 	public void testAddIntegerArrayInteger() {
 		int[] array = new int[] { 0, 1, 2, 3 };
-		assertThat(IntArrays.add(array, (int) 4), is(new int[] { 0, 1, 2, 3, 4 }));
+		assertThat(IntArrays.add(array, 4), is(new int[] { 0, 1, 2, 3, 4 }));
 		assertThat(array, is(new int[] { 0, 1, 2, 3 }));
 	}
 
 	@Test
 	public void testAddIntegerArrayIntegerInt1() {
 		int[] array = new int[] { 0, 1, 2, 3 };
-		assertThat(IntArrays.add(array, (int) 4, 1), is(new int[] { 0, 4, 1, 2, 3 }));
+		assertThat(IntArrays.add(array, 4, 1), is(new int[] { 0, 4, 1, 2, 3 }));
 		assertThat(array, is(new int[] { 0, 1, 2, 3 }));
 	}
 
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void testAddIntegerArrayIntegerInt2() {
 		int[] array = new int[] { 0, 1, 2, 3 };
-		IntArrays.add(array, (int) 4, 5);
+		IntArrays.add(array, 4, 5);
 	}
 
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void testAddIntegerArrayIntegerInt3() {
 		int[] array = new int[] { 0, 1, 2, 3 };
-		IntArrays.add(array, (int) 4, -1);
+		IntArrays.add(array, 4, -1);
 	}
 
 	@Test

@@ -7,10 +7,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
-import javax.annotation.Nonnull;
-
 public class ArrayTreeNode<T> implements TreeNode<T> {
-	@Nonnull
+
 	private final List<TreeNode<T>> children = new ArrayList<>();
 	private TreeNode<T> parent;
 	private T content;
@@ -33,20 +31,20 @@ public class ArrayTreeNode<T> implements TreeNode<T> {
 	}
 
 	@Override
-	@Nonnull
-	public TreeNode<T> addChild(@Nonnull TreeNode<T> child) {
+
+	public TreeNode<T> addChild(TreeNode<T> child) {
 		child.setParent(this);
 		return child;
 	}
 
 	@Override
-	@Nonnull
+
 	public TreeNode<T> addChild(T content) {
 		return addChild(new ArrayTreeNode<>(content));
 	}
 
 	@Override
-	public boolean removeChild(@Nonnull TreeNode<T> child) {
+	public boolean removeChild(TreeNode<T> child) {
 		return children.remove(requireNonNull(child));
 	}
 
@@ -56,12 +54,12 @@ public class ArrayTreeNode<T> implements TreeNode<T> {
 	}
 
 	@Override
-	public void addChildrenNodes(@Nonnull Collection<? extends TreeNode<T>> children) {
+	public void addChildrenNodes(Collection<? extends TreeNode<T>> children) {
 		children.forEach(this::addChild);
 	}
 
 	@Override
-	public void addChildrenContent(@Nonnull Collection<T> children) {
+	public void addChildrenContent(Collection<T> children) {
 		children.forEach(this::addChild);
 	}
 
@@ -71,7 +69,7 @@ public class ArrayTreeNode<T> implements TreeNode<T> {
 	}
 
 	@Override
-	@Nonnull
+
 	public List<TreeNode<T>> getChildren() {
 		return children;
 	}

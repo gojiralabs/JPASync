@@ -10,51 +10,51 @@ public class DoubleArraysTest {
 	@Test
 	public void testIndexOf1() {
 		double[] array = new double[] { 0, 1, 2, 3 };
-		assertThat(DoubleArrays.indexOf(array, (double) 2), is(2));
+		assertThat(DoubleArrays.indexOf(array, 2), is(2));
 	}
 
 	@Test
 	public void testIndexOf2() {
 		double[] array = new double[] { 0, 1, 2, 3 };
-		assertThat(DoubleArrays.indexOf(array, (double) 4), is(-1));
+		assertThat(DoubleArrays.indexOf(array, 4), is(-1));
 	}
 
 	@Test
 	public void testContains1() {
 		double[] array = new double[] { 0, 1, 2, 3 };
-		assertThat(DoubleArrays.contains(array, (double) 2), is(true));
+		assertThat(DoubleArrays.contains(array, 2), is(true));
 	}
 
 	@Test
 	public void testContains2() {
 		double[] array = new double[] { 0, 1, 2, 3 };
-		assertThat(DoubleArrays.contains(array, (double) 4), is(false));
+		assertThat(DoubleArrays.contains(array, 4), is(false));
 	}
 
 	@Test
 	public void testAddDoubleArrayDouble() {
 		double[] array = new double[] { 0, 1, 2, 3 };
-		assertThat(DoubleArrays.add(array, (double) 4), is(new double[] { 0, 1, 2, 3, 4 }));
+		assertThat(DoubleArrays.add(array, 4), is(new double[] { 0, 1, 2, 3, 4 }));
 		assertThat(array, is(new double[] { 0, 1, 2, 3 }));
 	}
 
 	@Test
 	public void testAddDoubleArrayDoubleInt1() {
 		double[] array = new double[] { 0, 1, 2, 3 };
-		assertThat(DoubleArrays.add(array, (double) 4, 1), is(new double[] { 0, 4, 1, 2, 3 }));
+		assertThat(DoubleArrays.add(array, 4, 1), is(new double[] { 0, 4, 1, 2, 3 }));
 		assertThat(array, is(new double[] { 0, 1, 2, 3 }));
 	}
 
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void testAddDoubleArrayDoubleInt2() {
 		double[] array = new double[] { 0, 1, 2, 3 };
-		DoubleArrays.add(array, (double) 4, 5);
+		DoubleArrays.add(array, 4, 5);
 	}
 
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void testAddDoubleArrayDoubleInt3() {
 		double[] array = new double[] { 0, 1, 2, 3 };
-		DoubleArrays.add(array, (double) 4, -1);
+		DoubleArrays.add(array, 4, -1);
 	}
 
 	@Test

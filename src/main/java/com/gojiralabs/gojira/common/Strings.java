@@ -4,8 +4,6 @@ import static com.gojiralabs.gojira.common.Checker.checkArgument;
 
 import java.util.Random;
 
-import javax.annotation.Nonnull;
-
 import com.gojiralabs.gojira.array.ArrayGroup;
 import com.gojiralabs.gojira.array.CharArrays;
 
@@ -23,19 +21,19 @@ public class Strings {
 		// private constructor to avoid instantiation
 	}
 
-	public static String capitalize(@Nonnull String value) {
+	public static String capitalize(String value) {
 		return value.isEmpty() ? value : Character.toUpperCase(value.charAt(0)) + value.substring(1);
 	}
 
-	public static String decapitalize(@Nonnull String value) {
+	public static String decapitalize(String value) {
 		return value.isEmpty() ? value : Character.toLowerCase(value.charAt(0)) + value.substring(1);
 	}
 
-	public static String randomString(int length, @Nonnull char[] contents) {
+	public static String randomString(int length, char[] contents) {
 		return randomString(length, length, contents);
 	}
 
-	public static String randomString(int minimumLength, int maximumLength, @Nonnull char[] contents) {
+	public static String randomString(int minimumLength, int maximumLength, char[] contents) {
 		return randomizeString(minimumLength, maximumLength, new ArrayGroup<>(CharArrays.box(contents)));
 	}
 
@@ -71,7 +69,7 @@ public class Strings {
 		return randomizeString(minimumLength, maximumLength, new ArrayGroup<>(UPPERCASE));
 	}
 
-	private static String randomizeString(int minimumLength, int maximumLength, @Nonnull ArrayGroup<Character> group) {
+	private static String randomizeString(int minimumLength, int maximumLength, ArrayGroup<Character> group) {
 		checkArgument(minimumLength >= 0, "The minimum length cannot be negative");
 		checkArgument(maximumLength >= minimumLength, "The maximum length cannot be lesser than the minimum length");
 		int length = group.length();

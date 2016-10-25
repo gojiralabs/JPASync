@@ -5,13 +5,11 @@ import static java.util.Objects.requireNonNull;
 import java.util.Collection;
 import java.util.List;
 
-import javax.annotation.Nonnull;
-
 public class ForwardingTreeNode<T> implements TreeNode<T> {
 
 	private final TreeNode<T> delegate;
 
-	public ForwardingTreeNode(@Nonnull TreeNode<T> treeNode) {
+	public ForwardingTreeNode(TreeNode<T> treeNode) {
 		this.delegate = requireNonNull(treeNode);
 	}
 
@@ -21,19 +19,19 @@ public class ForwardingTreeNode<T> implements TreeNode<T> {
 	}
 
 	@Override
-	@Nonnull
-	public TreeNode<T> addChild(@Nonnull TreeNode<T> child) {
+
+	public TreeNode<T> addChild(TreeNode<T> child) {
 		return delegate.addChild(child);
 	}
 
 	@Override
-	@Nonnull
+
 	public TreeNode<T> addChild(T content) {
 		return delegate.addChild(content);
 	}
 
 	@Override
-	public boolean removeChild(@Nonnull TreeNode<T> child) {
+	public boolean removeChild(TreeNode<T> child) {
 		return delegate.removeChild(child);
 	}
 
@@ -43,12 +41,12 @@ public class ForwardingTreeNode<T> implements TreeNode<T> {
 	}
 
 	@Override
-	public void addChildrenNodes(@Nonnull Collection<? extends TreeNode<T>> children) {
+	public void addChildrenNodes(Collection<? extends TreeNode<T>> children) {
 		delegate.addChildrenNodes(children);
 	}
 
 	@Override
-	public void addChildrenContent(@Nonnull Collection<T> children) {
+	public void addChildrenContent(Collection<T> children) {
 		delegate.addChildrenContent(children);
 	}
 
@@ -63,7 +61,7 @@ public class ForwardingTreeNode<T> implements TreeNode<T> {
 	}
 
 	@Override
-	@Nonnull
+
 	public List<TreeNode<T>> getChildren() {
 		return delegate.getChildren();
 	}

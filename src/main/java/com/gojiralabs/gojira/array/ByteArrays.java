@@ -3,14 +3,12 @@ package com.gojiralabs.gojira.array;
 import static com.gojiralabs.gojira.common.Checker.checkArgument;
 import static com.gojiralabs.gojira.common.Checker.checkArrayIndex;
 
-import javax.annotation.Nonnull;
-
 public class ByteArrays {
 	private ByteArrays() {
 		// private constructor to avoid instantiation
 	}
 
-	public static int indexOf(@Nonnull byte[] array, byte element) {
+	public static int indexOf(byte[] array, byte element) {
 		int index = 0;
 		for (byte current : array) {
 			if (current == element) {
@@ -21,22 +19,19 @@ public class ByteArrays {
 		return -1;
 	}
 
-	public static boolean contains(@Nonnull byte[] array, byte element) {
+	public static boolean contains(byte[] array, byte element) {
 		return indexOf(array, element) != -1;
 	}
 
-	@Nonnull
-	public static byte[] add(@Nonnull byte[] array, byte element) {
+	public static byte[] add(byte[] array, byte element) {
 		return add(array, element, array.length);
 	}
 
-	@Nonnull
-	public static byte[] add(@Nonnull byte[] array, byte element, int index) {
+	public static byte[] add(byte[] array, byte element, int index) {
 		return add(array, new byte[] { element }, index);
 	}
 
-	@Nonnull
-	public static byte[] add(@Nonnull byte[] array, @Nonnull byte[] toAdd, int index) {
+	public static byte[] add(byte[] array, byte[] toAdd, int index) {
 		checkArrayIndex(array, index - (index > 0 ? 1 : 0));
 		byte[] copy = new byte[array.length + toAdd.length];
 		System.arraycopy(array, 0, copy, 0, index);
@@ -45,13 +40,11 @@ public class ByteArrays {
 		return copy;
 	}
 
-	@Nonnull
-	public static byte[] remove(@Nonnull byte[] array, int index) {
+	public static byte[] remove(byte[] array, int index) {
 		return remove(array, index, index);
 	}
 
-	@Nonnull
-	public static byte[] remove(@Nonnull byte[] array, int fromIndex, int toIndex) {
+	public static byte[] remove(byte[] array, int fromIndex, int toIndex) {
 		checkArgument(fromIndex <= toIndex, "fromIndex cannot be greater than toIndex");
 		checkArrayIndex(array, fromIndex);
 		checkArrayIndex(array, toIndex);
@@ -61,8 +54,7 @@ public class ByteArrays {
 		return copy;
 	}
 
-	@Nonnull
-	public static Byte[] box(@Nonnull byte[] array) {
+	public static Byte[] box(byte[] array) {
 		Byte[] copy = new Byte[array.length];
 		int i = 0;
 		for (byte element : array) {
@@ -71,8 +63,7 @@ public class ByteArrays {
 		return copy;
 	}
 
-	@Nonnull
-	public static byte[] unbox(@Nonnull Byte[] array) {
+	public static byte[] unbox(Byte[] array) {
 		byte[] copy = new byte[array.length];
 		int i = 0;
 		for (Byte element : array) {
@@ -81,15 +72,13 @@ public class ByteArrays {
 		return copy;
 	}
 
-	@Nonnull
-	public static byte[] deepCopy(@Nonnull byte[] array) {
+	public static byte[] deepCopy(byte[] array) {
 		byte[] copy = new byte[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
 	}
 
-	@Nonnull
-	public static byte[] reverse(@Nonnull byte[] array) {
+	public static byte[] reverse(byte[] array) {
 		byte[] copy = array.clone();
 		int left = 0;
 		int right = copy.length - 1;
@@ -101,8 +90,7 @@ public class ByteArrays {
 		return copy;
 	}
 
-	@Nonnull
-	public static byte[] concat(@Nonnull byte[] firstArray, @Nonnull byte[] secondArray) {
+	public static byte[] concat(byte[] firstArray, byte[] secondArray) {
 		return add(firstArray, secondArray, firstArray.length);
 	}
 }

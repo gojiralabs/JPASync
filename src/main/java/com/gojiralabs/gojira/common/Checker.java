@@ -1,7 +1,5 @@
 package com.gojiralabs.gojira.common;
 
-import javax.annotation.Nonnull;
-
 public class Checker {
 
 	private Checker() {
@@ -16,7 +14,7 @@ public class Checker {
 		return object;
 	}
 
-	public static <T> T notNull(T object, @Nonnull String message, @Nonnull Object... messageParameters) {
+	public static <T> T notNull(T object, String message, Object... messageParameters) {
 		if (object == null) {
 			// this is really supposed to throw a NullPointerException
 			throw new NullPointerException(String.format(message, messageParameters)); // NOSONAR
@@ -24,39 +22,39 @@ public class Checker {
 		return object;
 	}
 
-	public static void checkArrayIndex(@Nonnull boolean[] array, int index) {
+	public static void checkArrayIndex(boolean[] array, int index) {
 		checkArrayIndex(array.length, index);
 	}
 
-	public static void checkArrayIndex(@Nonnull byte[] array, int index) {
+	public static void checkArrayIndex(byte[] array, int index) {
 		checkArrayIndex(array.length, index);
 	}
 
-	public static void checkArrayIndex(@Nonnull short[] array, int index) {
+	public static void checkArrayIndex(short[] array, int index) {
 		checkArrayIndex(array.length, index);
 	}
 
-	public static void checkArrayIndex(@Nonnull char[] array, int index) {
+	public static void checkArrayIndex(char[] array, int index) {
 		checkArrayIndex(array.length, index);
 	}
 
-	public static void checkArrayIndex(@Nonnull int[] array, int index) {
+	public static void checkArrayIndex(int[] array, int index) {
 		checkArrayIndex(array.length, index);
 	}
 
-	public static void checkArrayIndex(@Nonnull long[] array, int index) {
+	public static void checkArrayIndex(long[] array, int index) {
 		checkArrayIndex(array.length, index);
 	}
 
-	public static void checkArrayIndex(@Nonnull float[] array, int index) {
+	public static void checkArrayIndex(float[] array, int index) {
 		checkArrayIndex(array.length, index);
 	}
 
-	public static void checkArrayIndex(@Nonnull double[] array, int index) {
+	public static void checkArrayIndex(double[] array, int index) {
 		checkArrayIndex(array.length, index);
 	}
 
-	public static <T> void checkArrayIndex(@Nonnull T[] array, int index) {
+	public static <T> void checkArrayIndex(T[] array, int index) {
 		checkArrayIndex(array.length, index);
 	}
 
@@ -72,7 +70,7 @@ public class Checker {
 		}
 	}
 
-	public static void checkArgument(boolean condition, @Nonnull String message, @Nonnull Object... messageParameters) {
+	public static void checkArgument(boolean condition, String message, Object... messageParameters) {
 		if (!condition) {
 			throw new IllegalArgumentException(String.format(message, messageParameters));
 		}

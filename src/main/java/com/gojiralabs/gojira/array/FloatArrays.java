@@ -3,14 +3,12 @@ package com.gojiralabs.gojira.array;
 import static com.gojiralabs.gojira.common.Checker.checkArgument;
 import static com.gojiralabs.gojira.common.Checker.checkArrayIndex;
 
-import javax.annotation.Nonnull;
-
 public class FloatArrays {
 	private FloatArrays() {
 		// private constructor to avoid instantiation
 	}
 
-	public static int indexOf(@Nonnull float[] array, float element) {
+	public static int indexOf(float[] array, float element) {
 		int index = 0;
 		for (float current : array) {
 			if (Float.compare(current, element) == 0) {
@@ -21,22 +19,19 @@ public class FloatArrays {
 		return -1;
 	}
 
-	public static boolean contains(@Nonnull float[] array, float element) {
+	public static boolean contains(float[] array, float element) {
 		return indexOf(array, element) != -1;
 	}
 
-	@Nonnull
-	public static float[] add(@Nonnull float[] array, float element) {
+	public static float[] add(float[] array, float element) {
 		return add(array, element, array.length);
 	}
 
-	@Nonnull
-	public static float[] add(@Nonnull float[] array, float element, int index) {
+	public static float[] add(float[] array, float element, int index) {
 		return add(array, new float[] { element }, index);
 	}
 
-	@Nonnull
-	public static float[] add(@Nonnull float[] array, @Nonnull float[] toAdd, int index) {
+	public static float[] add(float[] array, float[] toAdd, int index) {
 		checkArrayIndex(array, index - (index > 0 ? 1 : 0));
 		float[] copy = new float[array.length + toAdd.length];
 		System.arraycopy(array, 0, copy, 0, index);
@@ -45,13 +40,11 @@ public class FloatArrays {
 		return copy;
 	}
 
-	@Nonnull
-	public static float[] remove(@Nonnull float[] array, int index) {
+	public static float[] remove(float[] array, int index) {
 		return remove(array, index, index);
 	}
 
-	@Nonnull
-	public static float[] remove(@Nonnull float[] array, int fromIndex, int toIndex) {
+	public static float[] remove(float[] array, int fromIndex, int toIndex) {
 		checkArgument(fromIndex <= toIndex, "fromIndex cannot be greater than toIndex");
 		checkArrayIndex(array, fromIndex);
 		checkArrayIndex(array, toIndex);
@@ -61,8 +54,7 @@ public class FloatArrays {
 		return copy;
 	}
 
-	@Nonnull
-	public static Float[] box(@Nonnull float[] array) {
+	public static Float[] box(float[] array) {
 		Float[] copy = new Float[array.length];
 		int i = 0;
 		for (Float element : array) {
@@ -71,8 +63,7 @@ public class FloatArrays {
 		return copy;
 	}
 
-	@Nonnull
-	public static float[] unbox(@Nonnull Float[] array) {
+	public static float[] unbox(Float[] array) {
 		float[] copy = new float[array.length];
 		int i = 0;
 		for (float element : array) {
@@ -81,15 +72,13 @@ public class FloatArrays {
 		return copy;
 	}
 
-	@Nonnull
-	public static float[] deepCopy(@Nonnull float[] array) {
+	public static float[] deepCopy(float[] array) {
 		float[] copy = new float[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
 	}
 
-	@Nonnull
-	public static float[] reverse(@Nonnull float[] array) {
+	public static float[] reverse(float[] array) {
 		float[] copy = array.clone();
 		int left = 0;
 		int right = copy.length - 1;
@@ -101,8 +90,7 @@ public class FloatArrays {
 		return copy;
 	}
 
-	@Nonnull
-	public static float[] concat(@Nonnull float[] firstArray, @Nonnull float[] secondArray) {
+	public static float[] concat(float[] firstArray, float[] secondArray) {
 		return add(firstArray, secondArray, firstArray.length);
 	}
 }

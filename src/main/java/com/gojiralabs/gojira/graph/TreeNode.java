@@ -10,23 +10,19 @@ import java.util.Objects;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-import javax.annotation.Nonnull;
-
 public interface TreeNode<T> extends Iterable<TreeNode<T>> {
 
 	void setParent(TreeNode<T> parent);
 
-	@Nonnull
-	TreeNode<T> addChild(@Nonnull TreeNode<T> child);
+	TreeNode<T> addChild(TreeNode<T> child);
 
-	@Nonnull
 	TreeNode<T> addChild(T content);
 
-	void addChildrenNodes(@Nonnull Collection<? extends TreeNode<T>> children);
+	void addChildrenNodes(Collection<? extends TreeNode<T>> children);
 
-	void addChildrenContent(@Nonnull Collection<T> children);
+	void addChildrenContent(Collection<T> children);
 
-	boolean removeChild(@Nonnull TreeNode<T> child);
+	boolean removeChild(TreeNode<T> child);
 
 	TreeNode<T> removeChild(int childIndex);
 
@@ -34,11 +30,8 @@ public interface TreeNode<T> extends Iterable<TreeNode<T>> {
 
 	TreeNode<T> getParent();
 
-	@Nonnull
 	List<TreeNode<T>> getChildren();
 
-	@SuppressWarnings("null")
-	@Nonnull
 	default Stream<TreeNode<T>> stream() {
 		return StreamSupport.stream(spliterator(), false);
 	}
@@ -52,7 +45,6 @@ public interface TreeNode<T> extends Iterable<TreeNode<T>> {
 		return null;
 	}
 
-	@Nonnull
 	default Iterator<TreeNode<T>> depthFirstIterator() {
 		return new TreeIterator<T>(this) {
 			@Override
@@ -62,7 +54,6 @@ public interface TreeNode<T> extends Iterable<TreeNode<T>> {
 		};
 	}
 
-	@Nonnull
 	default Iterator<TreeNode<T>> breadthFirstIterator() {
 		return new TreeIterator<T>(this) {
 			@Override
@@ -73,7 +64,7 @@ public interface TreeNode<T> extends Iterable<TreeNode<T>> {
 	}
 
 	@Override
-	@Nonnull
+
 	default Iterator<TreeNode<T>> iterator() {
 		return breadthFirstIterator();
 	}

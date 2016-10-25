@@ -3,8 +3,6 @@ package com.gojiralabs.gojira.array;
 import static com.gojiralabs.gojira.common.Checker.checkArgument;
 import static com.gojiralabs.gojira.common.Checker.checkArrayIndex;
 
-import javax.annotation.Nonnull;
-
 public class DoubleArrays {
 	private DoubleArrays() {
 		// private constructor to avoid instantiation
@@ -25,18 +23,15 @@ public class DoubleArrays {
 		return indexOf(array, element) != -1;
 	}
 
-	@Nonnull
-	public static double[] add(@Nonnull double[] array, double element) {
+	public static double[] add(double[] array, double element) {
 		return add(array, element, array.length);
 	}
 
-	@Nonnull
-	public static double[] add(@Nonnull double[] array, double element, int index) {
+	public static double[] add(double[] array, double element, int index) {
 		return add(array, new double[] { element }, index);
 	}
 
-	@Nonnull
-	public static double[] add(@Nonnull double[] array, double[] toAdd, int index) {
+	public static double[] add(double[] array, double[] toAdd, int index) {
 		checkArrayIndex(array, index - (index > 0 ? 1 : 0));
 		double[] copy = new double[array.length + toAdd.length];
 		System.arraycopy(array, 0, copy, 0, index);
@@ -45,13 +40,11 @@ public class DoubleArrays {
 		return copy;
 	}
 
-	@Nonnull
-	public static double[] remove(@Nonnull double[] array, int index) {
+	public static double[] remove(double[] array, int index) {
 		return remove(array, index, index);
 	}
 
-	@Nonnull
-	public static double[] remove(@Nonnull double[] array, int fromIndex, int toIndex) {
+	public static double[] remove(double[] array, int fromIndex, int toIndex) {
 		checkArgument(fromIndex <= toIndex, "fromIndex cannot be greater than toIndex");
 		checkArrayIndex(array, fromIndex);
 		checkArrayIndex(array, toIndex);
@@ -61,8 +54,7 @@ public class DoubleArrays {
 		return copy;
 	}
 
-	@Nonnull
-	public static Double[] box(@Nonnull double[] array) {
+	public static Double[] box(double[] array) {
 		Double[] copy = new Double[array.length];
 		int i = 0;
 		for (Double element : array) {
@@ -71,8 +63,7 @@ public class DoubleArrays {
 		return copy;
 	}
 
-	@Nonnull
-	public static double[] unbox(@Nonnull Double[] array) {
+	public static double[] unbox(Double[] array) {
 		double[] copy = new double[array.length];
 		int i = 0;
 		for (double element : array) {
@@ -81,15 +72,13 @@ public class DoubleArrays {
 		return copy;
 	}
 
-	@Nonnull
-	public static double[] deepCopy(@Nonnull double[] array) {
+	public static double[] deepCopy(double[] array) {
 		double[] copy = new double[array.length];
 		System.arraycopy(array, 0, copy, 0, copy.length);
 		return copy;
 	}
 
-	@Nonnull
-	public static double[] reverse(@Nonnull double[] array) {
+	public static double[] reverse(double[] array) {
 		double[] copy = array.clone();
 		int left = 0;
 		int right = copy.length - 1;
@@ -101,8 +90,7 @@ public class DoubleArrays {
 		return copy;
 	}
 
-	@Nonnull
-	public static double[] concat(@Nonnull double[] firstArray, @Nonnull double[] secondArray) {
+	public static double[] concat(double[] firstArray, double[] secondArray) {
 		return add(firstArray, secondArray, firstArray.length);
 	}
 }

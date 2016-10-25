@@ -10,51 +10,51 @@ public class LongArraysTest {
 	@Test
 	public void testIndexOf1() {
 		long[] array = new long[] { 0, 1, 2, 3 };
-		assertThat(LongArrays.indexOf(array, (long) 2), is(2));
+		assertThat(LongArrays.indexOf(array, 2), is(2));
 	}
 
 	@Test
 	public void testIndexOf2() {
 		long[] array = new long[] { 0, 1, 2, 3 };
-		assertThat(LongArrays.indexOf(array, (long) 4), is(-1));
+		assertThat(LongArrays.indexOf(array, 4), is(-1));
 	}
 
 	@Test
 	public void testContains1() {
 		long[] array = new long[] { 0, 1, 2, 3 };
-		assertThat(LongArrays.contains(array, (long) 2), is(true));
+		assertThat(LongArrays.contains(array, 2), is(true));
 	}
 
 	@Test
 	public void testContains2() {
 		long[] array = new long[] { 0, 1, 2, 3 };
-		assertThat(LongArrays.contains(array, (long) 4), is(false));
+		assertThat(LongArrays.contains(array, 4), is(false));
 	}
 
 	@Test
 	public void testAddLongArrayLong() {
 		long[] array = new long[] { 0, 1, 2, 3 };
-		assertThat(LongArrays.add(array, (long) 4), is(new long[] { 0, 1, 2, 3, 4 }));
+		assertThat(LongArrays.add(array, 4), is(new long[] { 0, 1, 2, 3, 4 }));
 		assertThat(array, is(new long[] { 0, 1, 2, 3 }));
 	}
 
 	@Test
 	public void testAddLongArrayLongInt1() {
 		long[] array = new long[] { 0, 1, 2, 3 };
-		assertThat(LongArrays.add(array, (long) 4, 1), is(new long[] { 0, 4, 1, 2, 3 }));
+		assertThat(LongArrays.add(array, 4, 1), is(new long[] { 0, 4, 1, 2, 3 }));
 		assertThat(array, is(new long[] { 0, 1, 2, 3 }));
 	}
 
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void testAddLongArrayLongInt2() {
 		long[] array = new long[] { 0, 1, 2, 3 };
-		LongArrays.add(array, (long) 4, 5);
+		LongArrays.add(array, 4, 5);
 	}
 
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void testAddLongArrayLongInt3() {
 		long[] array = new long[] { 0, 1, 2, 3 };
-		LongArrays.add(array, (long) 4, -1);
+		LongArrays.add(array, 4, -1);
 	}
 
 	@Test
@@ -112,7 +112,7 @@ public class LongArraysTest {
 		long[] array = new long[] { 0, 1, 2, 3, 4 };
 		LongArrays.remove(array, 1, 5);
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testRemoveLongArrayIntInt4() {
 		long[] array = new long[] { 0, 1, 2, 3, 4 };

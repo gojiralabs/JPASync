@@ -10,51 +10,51 @@ public class FloatArraysTest {
 	@Test
 	public void testIndexOf1() {
 		float[] array = new float[] { 0, 1, 2, 3 };
-		assertThat(FloatArrays.indexOf(array, (float) 2), is(2));
+		assertThat(FloatArrays.indexOf(array, 2), is(2));
 	}
 
 	@Test
 	public void testIndexOf2() {
 		float[] array = new float[] { 0, 1, 2, 3 };
-		assertThat(FloatArrays.indexOf(array, (float) 4), is(-1));
+		assertThat(FloatArrays.indexOf(array, 4), is(-1));
 	}
 
 	@Test
 	public void testContains1() {
 		float[] array = new float[] { 0, 1, 2, 3 };
-		assertThat(FloatArrays.contains(array, (float) 2), is(true));
+		assertThat(FloatArrays.contains(array, 2), is(true));
 	}
 
 	@Test
 	public void testContains2() {
 		float[] array = new float[] { 0, 1, 2, 3 };
-		assertThat(FloatArrays.contains(array, (float) 4), is(false));
+		assertThat(FloatArrays.contains(array, 4), is(false));
 	}
 
 	@Test
 	public void testAddFloatArrayFloat() {
 		float[] array = new float[] { 0, 1, 2, 3 };
-		assertThat(FloatArrays.add(array, (float) 4), is(new float[] { 0, 1, 2, 3, 4 }));
+		assertThat(FloatArrays.add(array, 4), is(new float[] { 0, 1, 2, 3, 4 }));
 		assertThat(array, is(new float[] { 0, 1, 2, 3 }));
 	}
 
 	@Test
 	public void testAddFloatArrayFloatInt1() {
 		float[] array = new float[] { 0, 1, 2, 3 };
-		assertThat(FloatArrays.add(array, (float) 4, 1), is(new float[] { 0, 4, 1, 2, 3 }));
+		assertThat(FloatArrays.add(array, 4, 1), is(new float[] { 0, 4, 1, 2, 3 }));
 		assertThat(array, is(new float[] { 0, 1, 2, 3 }));
 	}
 
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void testAddFloatArrayFloatInt2() {
 		float[] array = new float[] { 0, 1, 2, 3 };
-		FloatArrays.add(array, (float) 4, 5);
+		FloatArrays.add(array, 4, 5);
 	}
 
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void testAddFloatArrayFloatInt3() {
 		float[] array = new float[] { 0, 1, 2, 3 };
-		FloatArrays.add(array, (float) 4, -1);
+		FloatArrays.add(array, 4, -1);
 	}
 
 	@Test

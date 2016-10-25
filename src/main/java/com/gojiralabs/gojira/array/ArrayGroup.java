@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.annotation.Nonnull;
-
 public class ArrayGroup<T> {
 	private final List<T[]> group = new ArrayList<>();
 
 	@SafeVarargs
-	public ArrayGroup(@Nonnull T[]... arrays) {
+	public ArrayGroup(T[]... arrays) {
 		Arrays.stream(arrays).forEach(group::add);
 	}
 
@@ -26,7 +24,7 @@ public class ArrayGroup<T> {
 		throw new ArrayIndexOutOfBoundsException(index);
 	}
 
-	public void set(int index,  T value) {
+	public void set(int index, T value) {
 		int position = index;
 		for (T[] array : group) {
 			if (position < array.length) {
